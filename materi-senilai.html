@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+<script data-atala-guard>(function(){"use strict";if(window.top===window.self && !/lkpd\.html$/i.test(window.location.pathname) && !/^(localhost|127\.0\.0\.1)(:\d+)?$/.test(window.location.host)){window.location.replace("/");return}var b=function(e){e.preventDefault();e.stopPropagation()};document.addEventListener("contextmenu",function(e){e.preventDefault()},true);document.addEventListener("keydown",function(e){var k=(e.key||"").toUpperCase();var m=e.ctrlKey||e.metaKey;if(k==="F12"||e.keyCode===123||(m&&e.shiftKey&&(k==="I"||k==="J"||k==="C"))||(m&&(k==="U"||k==="S"))){b(e)}},true)})();</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Laboratorium Eksperimen Pecahan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="assets/css/custom.css">
+  <link rel="stylesheet" href="assets/css/versus.css">
+</head>
+
+<body>
+  <main class="garden-scene">
+    <div class="screen-shell">
+      <header class="topbar">
+        <a class="back-btn" href="index.html">← Beranda</a>
+        <nav class="utility-bar" aria-label="Pengaturan suara">
+          <button class="utility-btn" type="button" data-audio="music"><span class="utility-icon">♫</span><span
+              class="utility-label">Musik</span></button>
+          <button class="utility-btn" type="button" data-audio="sfx"><span class="utility-icon">◉</span><span
+              class="utility-label">Suara</span></button>
+          <button class="utility-btn dev-btn" type="button" data-open-modal="developerModal"><span
+              class="utility-icon developer-glyph" aria-hidden="true"></span><span
+              class="utility-label">Pengembang</span></button>
+        </nav>
+      </header>
+
+      <div class="page-heading">
+        <h1>Laboratorium Eksperimen Pecahan</h1>
+        <p>Sentuh, potong, dan makan pizzanya — pecahan jadi nyata!</p>
+      </div>
+
+      <section class="content-wrap panel" style="padding:clamp(18px,3vw,32px);">
+        <p class="lab-intro">Pecahan adalah <strong>bagian dari sesuatu yang utuh</strong>. Bayangkan kamu punya sebuah pizza, lalu kamu memotongnya menjadi beberapa bagian yang <strong>sama besar</strong>. Jika kamu mengambil sebagian dari potongan pizza tersebut, itulah yang disebut <strong>pecahan</strong>! Ketuk label berwarna di bawah ini untuk belajar lebih lanjut!</p>
+
+        <div class="explain-card" style="margin-bottom:18px;">
+          <h2>Struktur Pecahan</h2>
+          <div class="fraction-anatomy">
+            <button class="anatomy-label pembilang" type="button" data-tip>
+              Angka Atas: Pembilang
+              <span class="lab-tooltip" role="tooltip">Pembilang menunjukkan <strong>berapa banyak bagian yang kita
+                  miliki atau pilih</strong>. Di sini kita memilih 3 bagian.</span>
+            </button>
+            <div class="anatomy-fraction" aria-label="Pecahan tiga per empat">
+              <span class="anatomy-top">3</span>
+              <span class="anatomy-bar" aria-hidden="true"></span>
+              <span class="anatomy-bottom">4</span>
+            </div>
+            <button class="anatomy-label garis" type="button" data-tip>
+              Garis Tengah: Garis Bagi (per)
+              <span class="lab-tooltip" role="tooltip">Garis ini dibaca <strong>"per"</strong>. Angka 3 di atas dan 4 di
+                bawah dibaca <strong>"tiga per empat"</strong>.</span>
+            </button>
+            <button class="anatomy-label penyebut" type="button" data-tip>
+              Angka Bawah: Penyebut
+              <span class="lab-tooltip" role="tooltip">Penyebut menunjukkan <strong>total seluruh bagian yang sama
+                  besar</strong>. Di sini benda dibagi menjadi 4 bagian sama besar.</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="material-layout" style="padding:0;">
+          <div class="visual-stage">
+            <h2 style="margin:0 0 4px;color:var(--orange-dark);font:700 26px/1 'Fredoka';">Laboratorium Pizza</h2>
+            <div class="pizza-lab-controls-container" style="display:flex; flex-direction:column; gap:8px; align-items:center; margin-bottom:12px;">
+              <div class="pizza-lab-controls" id="numControls" style="display:flex; align-items:center;">
+                <span id="numLabel" style="font-weight:bold; color:#e03c31; margin-right:8px; font-size:18px;">Pembilang Awal:</span>
+                <button class="step-btn" id="numMinus" type="button" aria-label="Kurangi pembilang">−</button>
+                <output class="pizza-lab-count" id="numCount" style="min-width:120px;">0 dimakan</output>
+                <button class="step-btn" id="numPlus" type="button" aria-label="Tambah pembilang">+</button>
+              </div>
+              <div class="pizza-lab-controls" id="denControls" style="display:flex; align-items:center;">
+                <span id="denLabel" style="font-weight:bold; color:var(--orange-dark); margin-right:8px; font-size:18px;">Penyebut Awal:</span>
+                <button class="step-btn" id="sliceMinus" type="button" aria-label="Kurangi jumlah potongan">−</button>
+                <output class="pizza-lab-count" id="sliceCount" style="min-width:120px;">8 potongan</output>
+                <button class="step-btn" id="slicePlus" type="button" aria-label="Tambah jumlah potongan">+</button>
+              </div>
+              <div class="pizza-lab-controls" id="mulNumControls" style="display:none; align-items:center;">
+                <span id="mulNumLabel" style="font-weight:bold; color:#8a48db; margin-right:8px; font-size:18px;">Ambil Irisan:</span>
+                <button class="step-btn" id="mulNumMinus" type="button">−</button>
+                <output class="pizza-lab-count" id="mulNumCount" style="min-width:120px;">1 bagian</output>
+                <button class="step-btn" id="mulNumPlus" type="button">+</button>
+              </div>
+              <div class="pizza-lab-controls" id="mulDenControls" style="display:none; align-items:center;">
+                <span id="mulDenLabel" style="font-weight:bold; color:#5d27a5; margin-right:8px; font-size:18px;">Iris Lagi Jadi:</span>
+                <button class="step-btn" id="mulDenMinus" type="button">−</button>
+                <output class="pizza-lab-count" id="mulDenCount" style="min-width:120px;">2 bagian</output>
+                <button class="step-btn" id="mulDenPlus" type="button">+</button>
+              </div>
+            </div>
+            <div class="pizza-lab-stage">
+              <div id="labPizza" aria-label="Pizza interaktif"></div>
+              <div class="lab-live-fraction">
+                <span id="labFraction" aria-live="polite"></span>
+                <span class="lab-live-caption" id="labCaption">Belum ada potongan yang dimakan.</span>
+              </div>
+            </div>
+            <p class="lab-hint">Ketuk potongan pizza untuk <strong>memakannya</strong> — pecahannya berubah otomatis!
+            </p>
+          </div>
+
+          <div class="material-controls">
+            <article class="explain-card" id="experimentJournal">
+              <h2 id="journalTitle">Hasil Eksperimenmu</h2>
+              <p id="labExplanation">Tambah atau kurangi potongan pizza dengan tombol − dan +, lalu ketuk potongan untuk memakannya.</p>
+            </article>
+
+            <div class="concept-tabs" role="tablist" aria-label="Pilih materi" style="margin-top:14px;">
+              <button class="concept-tab active" type="button" data-concept="meaning">Arti Pecahan</button>
+              <button class="concept-tab" type="button" data-concept="equivalent">Senilai</button>
+              <button class="concept-tab" type="button" data-concept="operations">Tambah/Kurang</button>
+              <button class="concept-tab" type="button" data-concept="multiplication">Perkalian</button>
+              <button class="concept-tab" type="button" data-concept="division">Pembagian</button>
+            </div>
+            <div class="mini-lesson" id="miniLesson" style="margin-top:10px;"></div>
+            <div class="game-actions actions-tight" style="margin-top:14px;"><a class="primary-btn purple"
+                id="mainActionBtn" href="games/dasar-pecahan.html">Coba Level 1</a><a class="primary-btn orange"
+                id="vsActionBtn" href="versus-menu.html">Arena Versus</a></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/audio.js"></script>
+  <script defer src="assets/js/versus.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const stage = document.getElementById('labPizza');
+      const liveFraction = document.getElementById('labFraction');
+      const caption = document.getElementById('labCaption');
+      const explanation = document.getElementById('labExplanation');
+      const countOut = document.getElementById('sliceCount');
+      const minus = document.getElementById('sliceMinus');
+      const plus = document.getElementById('slicePlus');
+      const lessons = {
+        meaning: 'Penyebut (angka bawah) menunjukkan total potongan yang sama besar. Pembilang (angka atas) menunjukkan berapa potongan yang kita ambil. Contoh: 1/2 artinya 1 dari 2 potongan.',
+        equivalent: 'Pecahan senilai ukurannya sama walaupun angkanya berbeda! Coba belah pizzanya (+/-). Walaupun jumlah potongannya berubah, porsi yang dimakan tetap sama.',
+        operations: 'Untuk tambah/kurang, jumlah potongannya (penyebut) harus disamakan dulu! Jika sudah sama, kita tinggal tambah/kurang bagian atasnya. Contoh: 1/4 + 2/4 = 3/4.',
+        multiplication: '<strong>💡 Rahasia Master Koki</strong><br><strong>Konsep Logika:</strong> Perkalian pecahan hanyalah mencari bagian dari sebuah bagian yang sudah ada.<br><br><strong>Trik Berhitung:</strong> Punya cara cepatnya? Kalikan saja bahan atas (pembilang) dengan sesamanya, dan bahan bawah (penyebut) dengan sesamanya!',
+        division: '<strong>💡 Rahasia Dapur: Logika Pembagian</strong><br><strong>Konsep Utama:</strong> Pembagian pecahan sebenarnya hanya menjawab satu pertanyaan sederhana: "Ada berapa banyak potongan kecil yang muat di dalam potongan besar?"<br><br><strong>Trik Cepat:</strong> Punya trik andalan Koki? Untuk menghitung cepat, ubah tanda bagi (÷) menjadi kali (×), lalu balikkan pecahan yang di belakang!'
+      };
+
+      let currentConcept = 'meaning';
+      let denominator = 8;
+      let eaten = new Set();
+      let leftEaten = new Set([0]); // Untuk pizza sebelah kiri di tab operasi
+      let eqMultiplier = 1;
+      let mulNum = 1; // Untuk perkalian/pembagian
+      let mulDen = 2; // Untuk perkalian/pembagian
+      
+      const numControls = document.getElementById('numControls');
+      const numMinus = document.getElementById('numMinus');
+      const numPlus = document.getElementById('numPlus');
+      const numCount = document.getElementById('numCount');
+      
+      const mulNumControls = document.getElementById('mulNumControls');
+      const mulNumMinus = document.getElementById('mulNumMinus');
+      const mulNumPlus = document.getElementById('mulNumPlus');
+      const mulNumCount = document.getElementById('mulNumCount');
+      
+      const mulDenControls = document.getElementById('mulDenControls');
+      const mulDenMinus = document.getElementById('mulDenMinus');
+      const mulDenPlus = document.getElementById('mulDenPlus');
+      const mulDenCount = document.getElementById('mulDenCount');
+
+      const labHint = document.querySelector('.lab-hint');
+
+      function updateReadout() {
+        mulNumControls.style.display = 'none';
+        mulDenControls.style.display = 'none';
+        document.getElementById('numLabel').textContent = 'Pembilang:';
+        labHint.innerHTML = 'Ketuk potongan pizza untuk <strong>memakannya</strong> — pecahannya berubah otomatis!';
+        
+        if (currentConcept === 'meaning') {
+          numControls.style.display = 'flex';
+          const numerator = eaten.size;
+          liveFraction.innerHTML = FractionAdventure.fractionHTML(numerator, denominator);
+          caption.textContent = numerator === 0
+            ? 'Belum ada potongan yang dimakan.'
+            : `${numerator} dari ${denominator} potongan dimakan`;
+          
+          numCount.textContent = `${numerator} dimakan`;
+          countOut.textContent = `${denominator} potongan`;
+          
+          numMinus.disabled = numerator <= 0;
+          numPlus.disabled = numerator >= denominator;
+          minus.disabled = denominator <= 2;
+          plus.disabled = denominator >= 10;
+          
+          document.getElementById('denLabel').textContent = 'Penyebut:';
+          document.getElementById('journalTitle').textContent = 'Hasil Eksperimenmu';
+          document.getElementById('mainActionBtn').textContent = 'Coba Level 1';
+          document.getElementById('mainActionBtn').href = 'games/dasar-pecahan.html';
+          document.getElementById('vsActionBtn').textContent = 'Arena Versus';
+          
+          explanation.innerHTML = numerator === 0
+            ? `Pizza dibagi menjadi <strong>${denominator} bagian sama besar</strong> (penyebut = ${denominator}). Ketuk potongan untuk memakannya!`
+            : `Kamu memakan <strong style="color:#e03c31">${numerator}</strong> dari <strong style="color:var(--orange-dark)">${denominator}</strong> potongan, jadi pecahannya ${FractionAdventure.fractionHTML(numerator, denominator)}. Angka <strong style="color:#e03c31">${numerator}</strong> adalah pembilang (yang dimakan) dan <strong style="color:var(--orange-dark)">${denominator}</strong> adalah penyebut (total potongan).`;
+        } else if (currentConcept === 'equivalent') {
+          numControls.style.display = 'flex';
+          const baseNum = eaten.size;
+          const baseDen = denominator;
+          const currentNum = baseNum * eqMultiplier;
+          const currentDen = baseDen * eqMultiplier;
+          
+          liveFraction.innerHTML = FractionAdventure.fractionHTML(currentNum, currentDen);
+          caption.innerHTML = `${FractionAdventure.fractionHTML(baseNum, baseDen)} = ${FractionAdventure.fractionHTML(currentNum, currentDen)}`;
+          
+          numCount.textContent = `${baseNum} dimakan`;
+          countOut.textContent = `Dikali ${eqMultiplier}`;
+          
+          numMinus.disabled = baseNum <= 1;
+          numPlus.disabled = baseNum >= baseDen;
+          minus.disabled = eqMultiplier <= 1;
+          plus.disabled = eqMultiplier >= 4;
+          
+          explanation.innerHTML = `Pecahan <strong>${baseNum}/${baseDen}</strong> senilai dengan <strong>${currentNum}/${currentDen}</strong>. Walaupun pizzanya dipotong ${eqMultiplier} kali lebih banyak, porsi keseluruhannya tetap sama besar!`;
+        } else if (currentConcept === 'operations') {
+          numControls.style.display = 'none';
+          liveFraction.innerHTML = `${FractionAdventure.fractionHTML(leftEaten.size, denominator)} + ${FractionAdventure.fractionHTML(eaten.size, denominator)} = ${FractionAdventure.fractionHTML(leftEaten.size + eaten.size, denominator)}`;
+          caption.textContent = 'Eksperimen Penjumlahan';
+          countOut.textContent = `Penyebut ${denominator}`;
+          minus.disabled = denominator <= 2;
+          plus.disabled = denominator >= 10;
+          
+          explanation.innerHTML = `Penyebutnya sudah sama-sama <strong style="color:var(--orange-dark)">${denominator}</strong>, jadi kita tinggal tambahkan pembilangnya: <strong style="color:#e03c31">${leftEaten.size} + ${eaten.size} = ${leftEaten.size + eaten.size}</strong>. (Ketuk kedua pizza untuk mencoba!).`;
+        } else if (currentConcept === 'multiplication') {
+          numControls.style.display = 'flex';
+          mulNumControls.style.display = 'flex';
+          mulDenControls.style.display = 'flex';
+          
+          document.getElementById('numLabel').textContent = 'Ambil Porsi:';
+          document.getElementById('denLabel').textContent = 'Potong Loyang:';
+          document.getElementById('mulNumLabel').textContent = 'Ambil Irisan Kecil:';
+          document.getElementById('mulDenLabel').textContent = 'Iris Lagi Tiap Porsi:';
+          
+          document.getElementById('journalTitle').textContent = 'Jurnal Eksperimen Pizza';
+          document.getElementById('mainActionBtn').textContent = 'Mulai Meracik Pizza!';
+          document.getElementById('mainActionBtn').href = 'games/perkalian.html';
+          document.getElementById('vsActionBtn').textContent = 'Tantang Koki Lain (Versus)';
+          
+          const num = eaten.size || 1;
+          liveFraction.innerHTML = `${FractionAdventure.fractionHTML(mulNum, mulDen)} &times; ${FractionAdventure.fractionHTML(num, denominator)} = ${FractionAdventure.fractionHTML(num * mulNum, mulDen * denominator)}`;
+          caption.textContent = 'Eksperimen Perkalian';
+          
+          numCount.textContent = `${num} porsi`;
+          countOut.textContent = `${denominator} potong`;
+          mulNumCount.textContent = `${mulNum} irisan`;
+          mulDenCount.textContent = `Bagi ${mulDen}`;
+          
+          numMinus.disabled = num <= 1;
+          numPlus.disabled = num >= denominator;
+          minus.disabled = denominator <= 2;
+          plus.disabled = denominator >= 8;
+          
+          mulNumMinus.disabled = mulNum <= 1;
+          mulNumPlus.disabled = mulNum >= mulDen;
+          mulDenMinus.disabled = mulDen <= 2;
+          mulDenPlus.disabled = mulDen >= 4;
+          
+          labHint.innerHTML = 'Gunakan tombol <strong>-</strong> dan <strong>+</strong> untuk meracik potongan pizzamu!';
+          explanation.innerHTML = `Bayangkan kamu memiliki <strong>${num}/${denominator}</strong> loyang pizza. Kamu hanya ingin mengambil <strong>${mulNum}/${mulDen}</strong> dari sisa pizza tersebut! Untuk membaginya adil, kamu harus mengiris tiap porsi menjadi ${mulDen} bagian. Ternyata, ${mulNum}/${mulDen} dari ${num}/${denominator} pizza itu setara dengan <strong>${num * mulNum}/${mulDen * denominator}</strong> dari keseluruhan loyang utuh!`;
+        } else if (currentConcept === 'division') {
+          numControls.style.display = 'flex';
+          mulNumControls.style.display = 'flex';
+          mulDenControls.style.display = 'flex';
+          
+          document.getElementById('numLabel').textContent = 'Porsi Awal:';
+          document.getElementById('denLabel').textContent = 'Potong Loyang:';
+          document.getElementById('mulNumLabel').textContent = 'Pembilang Pemotong:';
+          document.getElementById('mulDenLabel').textContent = 'Penyebut Pemotong:';
+          
+          document.getElementById('journalTitle').textContent = '🍕 Pesanan Pesta Pizza!';
+          document.getElementById('mainActionBtn').innerHTML = '🚀 Mulai Tantangan Membagi!';
+          document.getElementById('mainActionBtn').href = 'games/pembagian.html';
+          document.getElementById('vsActionBtn').innerHTML = '⚔️ Duel Koki (Versus)';
+          
+          const num = eaten.size || 1;
+          // Result of division: (num/denominator) / (mulNum/mulDen) = (num * mulDen) / (denominator * mulNum)
+          const resNum = num * mulDen;
+          const resDen = denominator * mulNum;
+          liveFraction.innerHTML = `${FractionAdventure.fractionHTML(num, denominator)} &divide; ${FractionAdventure.fractionHTML(mulNum, mulDen)} = ${FractionAdventure.fractionHTML(resNum, resDen)}`;
+          caption.textContent = 'Eksperimen Pembagian';
+          
+          numCount.textContent = `${num} porsi`;
+          countOut.textContent = `${denominator} potong`;
+          mulNumCount.textContent = `${mulNum} bagian`;
+          mulDenCount.textContent = `Per ${mulDen}`;
+          
+          numMinus.disabled = num <= 1;
+          numPlus.disabled = num >= denominator;
+          minus.disabled = denominator <= 2;
+          plus.disabled = denominator >= 8;
+          
+          mulNumMinus.disabled = mulNum <= 1;
+          mulNumPlus.disabled = mulNum >= mulDen;
+          mulDenMinus.disabled = mulDen <= 2;
+          mulDenPlus.disabled = mulDen >= 8;
+          
+          labHint.innerHTML = 'Atur <strong>Ukuran Porsi Pemotong</strong> untuk melihat hasil baginya!';
+          explanation.innerHTML = `Kamu memiliki <strong>${num}/${denominator}</strong> loyang pizza. Datang pelanggan yang memesan pizza dengan potongan seukuran <strong>${mulNum}/${mulDen}</strong> loyang. Dari ${num}/${denominator} pizza milikmu, jika dihitung, kamu bisa menyajikan tepat <strong>${resNum}/${resDen}</strong> porsi (atau setara ${Math.floor(resNum/resDen)} porsi utuh sisa ${resNum%resDen}/${resDen}). Misi berhasil!`;
+        }
+      }
+
+      function buildPizza() {
+        stage.innerHTML = '';
+        
+        if (currentConcept === 'meaning') {
+          eaten = new Set([...eaten].filter((index) => index < denominator));
+          const visual = VersusCore.createFractionSVG({
+            numerator: 0, denominator, selected: eaten, interactive: true, prefix: 'lab', className: 'duel-pizza-svg',
+            onToggle: () => { window.GameAudio?.click(); updateReadout(); }
+          });
+          stage.appendChild(visual.svg);
+        } else if (currentConcept === 'equivalent') {
+          eaten = new Set([...eaten].filter((index) => index < denominator));
+          if (eaten.size === 0) eaten.add(0); // Select at least 1 for equivalent
+          
+          const currentDen = denominator * eqMultiplier;
+          const selected = new Set();
+          eaten.forEach(idx => {
+            for(let i=0; i<eqMultiplier; i++) selected.add(idx * eqMultiplier + i);
+          });
+          
+          const visual = VersusCore.createFractionSVG({
+            numerator: 0, denominator: currentDen, selected: selected, interactive: false, prefix: 'lab-eq', className: 'duel-pizza-svg'
+          });
+          stage.appendChild(visual.svg);
+        } else if (currentConcept === 'operations') {
+          eaten = new Set([...eaten].filter((index) => index < denominator));
+          leftEaten = new Set([...leftEaten].filter((index) => index < denominator));
+          
+          stage.style.display = 'flex';
+          stage.style.gap = '10px';
+          
+          const p1 = VersusCore.createFractionSVG({ 
+            numerator: 0, denominator, selected: leftEaten, interactive: true, prefix: 'op1', className: 'mini-fraction-svg',
+            onToggle: () => { window.GameAudio?.click(); updateReadout(); buildPizza(); }
+          });
+          const plusSign = document.createElement('div');
+          plusSign.innerHTML = '+';
+          plusSign.style.fontSize = '30px';
+          plusSign.style.fontWeight = 'bold';
+          
+          const p2 = VersusCore.createFractionSVG({ 
+            numerator: 0, denominator, selected: eaten, interactive: true, prefix: 'op2', className: 'mini-fraction-svg',
+            onToggle: () => { window.GameAudio?.click(); updateReadout(); buildPizza(); }
+          });
+          
+          const eqSign = document.createElement('div');
+          eqSign.innerHTML = '=';
+          eqSign.style.fontSize = '30px';
+          eqSign.style.fontWeight = 'bold';
+          
+          const resSel = new Set();
+          let c = 0;
+          for(let i=0; i<leftEaten.size + eaten.size; i++) {
+             resSel.add(Math.min(i, denominator-1));
+          }
+          
+          const p3 = VersusCore.createFractionSVG({ numerator: 0, denominator, selected: resSel, prefix: 'op3', className: 'mini-fraction-svg' });
+          
+          stage.append(p1.svg, plusSign, p2.svg, eqSign, p3.svg);
+        } else if (currentConcept === 'multiplication' || currentConcept === 'division') {
+          eaten = new Set([...eaten].filter((index) => index < denominator));
+          if(eaten.size === 0) { eaten.add(0); updateReadout(); }
+          
+          const currentDen = denominator * mulDen;
+          const selected = new Set();
+          
+          if (currentConcept === 'multiplication') {
+             // For multiplication: from each eaten slice, we cut it into mulDen slices, and select mulNum of them.
+             eaten.forEach(idx => {
+               for(let i=0; i<mulNum; i++) {
+                 selected.add(idx * mulDen + i);
+               }
+             });
+          } else {
+             // For division: we just show the base pizza cut into smaller slices (mulDen) so they can visualize.
+             eaten.forEach(idx => {
+               for(let i=0; i<mulDen; i++) {
+                 selected.add(idx * mulDen + i);
+               }
+             });
+          }
+          
+          const visual = VersusCore.createFractionSVG({
+            numerator: 0, denominator: currentDen, selected: selected, interactive: false, prefix: 'muldiv', className: 'duel-pizza-svg'
+          });
+          stage.appendChild(visual.svg);
+        }
+        
+        updateReadout();
+      }
+
+      minus.addEventListener('click', () => { 
+        if (currentConcept === 'equivalent') {
+          if (eqMultiplier > 1) { eqMultiplier--; buildPizza(); }
+        } else {
+          if (denominator > 2) { denominator--; buildPizza(); } 
+        }
+      });
+      
+      plus.addEventListener('click', () => { 
+        if (currentConcept === 'equivalent') {
+          if (eqMultiplier < 4) { eqMultiplier++; buildPizza(); }
+        } else {
+          if (denominator < 10) { denominator++; buildPizza(); } 
+        }
+      });
+      
+      numMinus.addEventListener('click', () => {
+        if (currentConcept === 'meaning' || currentConcept === 'equivalent') {
+          if (eaten.size > 0) {
+            let max = -1;
+            eaten.forEach(v => { if (v > max) max = v; });
+            if (max !== -1) eaten.delete(max);
+            buildPizza();
+          }
+        } else if (currentConcept === 'multiplication' || currentConcept === 'division') {
+          if (eaten.size > 1) { // must keep at least 1 eaten slice for visualization
+            let max = -1;
+            eaten.forEach(v => { if (v > max) max = v; });
+            if (max !== -1) eaten.delete(max);
+            buildPizza();
+          }
+        }
+      });
+      
+      numPlus.addEventListener('click', () => {
+        if (currentConcept === 'meaning' || currentConcept === 'equivalent') {
+          if (eaten.size < denominator) {
+            let next = 0;
+            while(eaten.has(next)) next++;
+            eaten.add(next);
+            buildPizza();
+          }
+        } else if (currentConcept === 'multiplication' || currentConcept === 'division') {
+          if (eaten.size < denominator) {
+            let next = 0;
+            while(eaten.has(next)) next++;
+            eaten.add(next);
+            buildPizza();
+          }
+        }
+      });
+      
+      mulNumMinus.addEventListener('click', () => {
+        if (mulNum > 1) { mulNum--; buildPizza(); }
+      });
+      
+      mulNumPlus.addEventListener('click', () => {
+        if (mulNum < mulDen) { mulNum++; buildPizza(); }
+      });
+      
+      mulDenMinus.addEventListener('click', () => {
+        if (mulDen > 2) { 
+          mulDen--; 
+          if(mulNum > mulDen) mulNum = mulDen;
+          buildPizza(); 
+        }
+      });
+      
+      mulDenPlus.addEventListener('click', () => {
+        if (mulDen < 8) { mulDen++; buildPizza(); }
+      });
+
+      function renderLesson(key) {
+        document.getElementById('miniLesson').innerHTML = String(lessons[key]).replace(/(\d+)\s*\/\s*(\d+)/g, (_, n, d) => FractionAdventure.fractionHTML(n, d));
+      }
+      
+      document.querySelectorAll('.concept-tab').forEach((tab) => tab.addEventListener('click', () => {
+        document.querySelectorAll('.concept-tab').forEach((item) => item.classList.toggle('active', item === tab));
+        currentConcept = tab.dataset.concept;
+        stage.style.display = 'block';
+        stage.style.gap = '0';
+        eqMultiplier = 1;
+        renderLesson(currentConcept);
+        buildPizza();
+      }));
+
+      document.querySelectorAll('.anatomy-label').forEach((label) => {
+        label.addEventListener('click', () => {
+          const isOpen = label.classList.contains('show-tip');
+          document.querySelectorAll('.anatomy-label').forEach((item) => item.classList.remove('show-tip'));
+          if (!isOpen) label.classList.add('show-tip');
+        });
+      });
+      document.addEventListener('click', (event) => {
+        if (!event.target.closest('.anatomy-label')) {
+          document.querySelectorAll('.anatomy-label').forEach((item) => item.classList.remove('show-tip'));
+        }
+      });
+
+      renderLesson('meaning');
+      buildPizza();
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <script
+    data-atala-guard>(function () { "use strict"; if (window.top === window.self && !/lkpd\.html$/i.test(window.location.pathname) && !/^(localhost|127\.0\.0\.1)(:\d+)?$/.test(window.location.host)) { window.location.replace("/"); return } var b = function (e) { e.preventDefault(); e.stopPropagation() }; document.addEventListener("contextmenu", function (e) { e.preventDefault() }, true); document.addEventListener("keydown", function (e) { var k = (e.key || "").toUpperCase(); var m = e.ctrlKey || e.metaKey; if (k === "F12" || e.keyCode === 123 || (m && e.shiftKey && (k === "I" || k === "J" || k === "C")) || (m && (k === "U" || k === "S"))) { b(e) } }, true) })();</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#38a9e5">
+  <title>Petualangan Pecahan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+
+<body>
+  <main class="garden-scene">
+    <div class="screen-shell">
+      <header class="topbar" aria-label="Bilah utilitas">
+        <div class="brand-mini"><span class="brand-badge">½</span><span>Krisna Media</span></div>
+        <nav class="utility-bar" aria-label="Pengaturan aplikasi">
+          <button class="utility-btn" type="button" data-audio="music" aria-pressed="true"><span
+              class="utility-icon">♫</span><span class="utility-label">Musik</span></button>
+          <button class="utility-btn" type="button" data-audio="sfx" aria-pressed="true"><span
+              class="utility-icon">◉</span><span class="utility-label">Suara</span></button>
+          <button class="utility-btn dev-btn" type="button" data-open-modal="developerModal"><span
+              class="utility-icon developer-glyph" aria-hidden="true"></span><span
+              class="utility-label">Pengembang</span></button>
+          <button class="utility-btn" type="button" data-open-report title="Laporan Guru (45 Siswa)"><span
+              class="utility-icon">▦</span><span class="utility-label">Laporan Guru</span></button>
+          <button class="utility-btn" type="button" data-open-modal="settingsModal"><span
+              class="utility-icon">⚙</span><span class="utility-label">Atur</span></button>
+          <button class="utility-btn" type="button" data-exit><span class="utility-icon">↪</span><span
+              class="utility-label">Keluar</span></button>
+        </nav>
+      </header>
+
+      <section class="home-main" aria-labelledby="mainTitle">
+        <div class="wood-title">
+          <h1 id="mainTitle">Petualangan <span>Pecahan</span></h1>
+          <p class="ribbon">★ Belajar Sambil Bermain, Pecahan Jadi Mudah! ★</p>
+        </div>
+
+        <nav class="menu-grid" aria-label="Menu utama">
+          <article class="menu-card green">
+            <h2 class="menu-card-title">PETUNJUK</h2>
+            <div class="menu-illustration" aria-hidden="true">
+              <div class="menu-symbol compass-symbol"><span></span></div>
+            </div>
+            <a class="play-btn" href="petunjuk.html">MULAI</a>
+          </article>
+          <article class="menu-card blue">
+            <h2 class="menu-card-title">MATERI</h2>
+            <div class="menu-illustration"><img class="menu-teacher" src="assets/images/characters/teacher.png"
+                alt="Bu guru membawa buku pecahan"></div>
+            <a class="play-btn" href="materi.html">MULAI</a>
+          </article>
+          <article class="menu-card red">
+            <h2 class="menu-card-title">VIDEO</h2>
+            <div class="menu-illustration" aria-hidden="true">
+              <div class="menu-symbol video-symbol">
+                <div class="video-screen">
+                  <div class="video-play-tri"></div>
+                </div>
+              </div>
+            </div>
+            <a class="play-btn" href="video.html">MULAI</a>
+          </article>
+          <article class="menu-card purple">
+            <h2 class="menu-card-title">GAME</h2>
+            <div class="menu-illustration" aria-hidden="true">
+              <div class="menu-symbol trophy-symbol"><span class="cup"><span>★</span></span><span class="stem"></span>
+              </div>
+            </div>
+            <a class="play-btn" href="game-menu.html">MULAI</a>
+          </article>
+          <article class="menu-card orange">
+            <h2 class="menu-card-title">SOAL</h2>
+            <div class="menu-illustration" aria-hidden="true">
+              <div class="menu-symbol quiz-symbol"></div>
+            </div>
+            <a class="play-btn" href="soal.html">MULAI</a>
+          </article>
+        </nav>
+      </section>
+    </div>
+
+    <img class="home-character boy" src="assets/images/characters/boy_student.png" alt="" aria-hidden="true">
+    <img class="home-character girl" src="assets/images/characters/girl_student.png" alt="" aria-hidden="true">
+    <span class="floating-fraction one" aria-hidden="true">¾</span>
+    <span class="floating-fraction two" aria-hidden="true">⅔</span>
+    <span class="floating-fraction three" aria-hidden="true">½</span>
+    <span class="floating-fraction four" aria-hidden="true">¼</span>
+    <span class="floating-fraction five" aria-hidden="true">⅕</span>
+  </main>
+
+  <div class="modal-backdrop" id="settingsModal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle" inert>
+    <div class="modal-card">
+      <div class="modal-icon" aria-hidden="true">⚙</div>
+      <h2 id="settingsTitle">Pengaturan</h2>
+      <p>Musik dan efek suara dapat diatur dari tombol bulat di kanan atas. Progres tersimpan otomatis di perangkat ini.
+      </p>
+      <div class="modal-actions">
+        <button class="secondary-btn" type="button" data-close-modal>Tutup</button>
+        <button class="primary-btn red" type="button" data-reset-progress>Ulangi Progres</button>
+      </div>
+    </div>
+  </div>
+
+  <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/audio.js"></script>
+  <script defer src="assets/js/tracker.js"></script>
+</body>
+
+</html>

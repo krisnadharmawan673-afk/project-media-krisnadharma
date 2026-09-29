@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<script data-atala-guard>(function(){"use strict";if(window.top===window.self && !/lkpd\.html$/i.test(window.location.pathname) && !/^(localhost|127\.0\.0\.1)(:\d+)?$/.test(window.location.host)){window.location.replace("/");return}var b=function(e){e.preventDefault();e.stopPropagation()};document.addEventListener("contextmenu",function(e){e.preventDefault()},true);document.addEventListener("keydown",function(e){var k=(e.key||"").toUpperCase();var m=e.ctrlKey||e.metaKey;if(k==="F12"||e.keyCode===123||(m&&e.shiftKey&&(k==="I"||k==="J"||k==="C"))||(m&&(k==="U"||k==="S"))){b(e)}},true)})();</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#42aee8">
+  <title>Peta Level — Petualangan Pecahan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="assets/css/custom.css">
+  <link rel="stylesheet" href="assets/css/versus.css">
+</head>
+<body>
+  <main class="garden-scene">
+    <div class="screen-shell">
+      <header class="topbar">
+        <a class="back-btn" href="index.html">← Beranda</a>
+        <nav class="utility-bar" aria-label="Pengaturan aplikasi">
+          <button class="utility-btn" type="button" data-audio="music"><span class="utility-icon">♫</span><span class="utility-label">Musik</span></button>
+          <button class="utility-btn" type="button" data-audio="sfx"><span class="utility-icon">◉</span><span class="utility-label">Suara</span></button>
+          <button class="utility-btn dev-btn" type="button" data-open-modal="developerModal"><span class="utility-icon developer-glyph" aria-hidden="true"></span><span class="utility-label">Pengembang</span></button>
+          <button class="utility-btn" type="button" data-open-report title="Laporan Guru (45 Siswa)"><span class="utility-icon">▦</span><span class="utility-label">Laporan Guru</span></button>
+          <button class="utility-btn" type="button" data-open-modal="settingsModal"><span class="utility-icon">⚙</span><span class="utility-label">Atur</span></button>
+          <button class="utility-btn" type="button" data-exit data-home="index.html"><span class="utility-icon">↪</span><span class="utility-label">Keluar</span></button>
+        </nav>
+      </header>
+
+      <div class="page-heading">
+        <h1>Petualangan Pecahan</h1>
+        <p>Belajar Matematika Jadi Seru!</p>
+      </div>
+
+      <section class="path-board" aria-label="Peta level permainan">
+        <div class="level-grid">
+          <article class="level-card" data-level="1">
+            <span class="level-number">1</span>
+            <h2>Dasar Pecahan</h2>
+            <div class="level-art" aria-hidden="true">
+              <img class="level-image" src="assets/images/ui/pizza_fraction.png" alt="">
+              <div class="math-chips"><span class="math-chip">½</span><span class="math-chip">¼</span><span class="math-chip">¾</span></div>
+            </div>
+            <p class="level-status">★ Siap dimainkan</p>
+            <a class="primary-btn level-action" href="games/dasar-pecahan.html">MAIN</a>
+          </article>
+
+          <article class="level-card" data-level="2">
+            <span class="level-number">2</span>
+            <h2>Membandingkan &amp; Mengurutkan</h2>
+            <div class="level-art" aria-hidden="true">
+              <div class="race-icon"><span class="race-car"></span></div>
+              <div class="math-chips"><span class="math-chip">&gt;</span><span class="math-chip">&lt;</span><span class="math-chip">=</span></div>
+            </div>
+            <p class="level-status">★ Siap dimainkan</p>
+            <a class="primary-btn level-action" href="games/membandingkan.html">MAIN</a>
+          </article>
+
+          <article class="level-card" data-level="3">
+            <span class="level-number">3</span>
+            <h2>Penjumlahan Pecahan</h2>
+            <div class="level-art" aria-hidden="true">
+              <div class="flask-icon"></div>
+              <div class="math-chips"><span class="math-chip">¼</span><span class="math-chip">+</span><span class="math-chip">²⁄₄</span></div>
+            </div>
+            <p class="level-status">★ Siap dimainkan</p>
+            <a class="primary-btn level-action" href="games/penjumlahan.html">MAIN</a>
+          </article>
+
+          <article class="level-card" data-level="4">
+            <span class="level-number">4</span>
+            <h2>Pengurangan Pecahan</h2>
+            <div class="level-art" aria-hidden="true">
+              <div class="chest-icon"></div>
+              <div class="math-chips"><span class="math-chip">¾</span><span class="math-chip">−</span><span class="math-chip">¼</span></div>
+            </div>
+            <p class="level-status">★ Siap dimainkan</p>
+            <a class="primary-btn level-action" href="games/pengurangan.html">MAIN</a>
+          </article>
+
+          <article class="level-card" data-level="5">
+            <span class="level-number">5</span>
+            <h2>Perkalian Pecahan</h2>
+            <div class="level-art" aria-hidden="true">
+              <div class="race-icon"><span class="race-car"></span></div>
+              <div class="math-chips"><span class="math-chip">½</span><span class="math-chip">×</span><span class="math-chip">¼</span></div>
+            </div>
+            <p class="level-status">★ Siap dimainkan</p>
+            <a class="primary-btn level-action" href="games/perkalian.html">MAIN</a>
+          </article>
+
+          <article class="level-card" data-level="6">
+            <span class="level-number">6</span>
+            <h2>Pembagian Pecahan</h2>
+            <div class="level-art" aria-hidden="true">
+              <div class="flask-icon"></div>
+              <div class="math-chips"><span class="math-chip">¾</span><span class="math-chip">÷</span><span class="math-chip">¼</span></div>
+            </div>
+            <p class="level-status">★ Siap dimainkan</p>
+            <a class="primary-btn level-action" href="games/pembagian.html">MAIN</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="versus-banner" aria-label="Mode permainan versus">
+        <div class="versus-banner-mark">VS</div>
+        <div><h2>Arena Versus 2 Siswa</h2><p>Tiga game duel berdampingan dengan input absen dan kontrol khusus guru.</p></div>
+        <a class="primary-btn" href="versus-menu.html">BUKA ARENA</a>
+      </section>
+
+      <div class="guide-tip level-guide-tip">★ <strong>Ayo Jadi Juara Matematika!</strong> Setiap level yang selesai akan membuka petualangan berikutnya.</div>
+    </div>
+  </main>
+
+  <div class="modal-backdrop" id="settingsModal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle" inert>
+    <div class="modal-card">
+      <div class="modal-level-mark" aria-hidden="true">LEVEL 1 → 6</div>
+      <h2 id="settingsTitle">Progres Petualangan</h2>
+      <p>Level terbuka otomatis setelah tantangan sebelumnya diselesaikan. Kamu bisa mengulang progres dari Level 1.</p>
+      <div class="modal-actions">
+        <button class="secondary-btn" type="button" data-close-modal>Tutup</button>
+        <button class="primary-btn red" type="button" data-reset-progress>Ulangi Progres</button>
+      </div>
+    </div>
+  </div>
+
+  <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/audio.js"></script>
+  <script defer src="assets/js/tracker.js"></script>
+</body>
+</html>

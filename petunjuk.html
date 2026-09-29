@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<script data-atala-guard>(function(){"use strict";if(window.top===window.self && !/lkpd\.html$/i.test(window.location.pathname) && !/^(localhost|127\.0\.0\.1)(:\d+)?$/.test(window.location.host)){window.location.replace("/");return}var b=function(e){e.preventDefault();e.stopPropagation()};document.addEventListener("contextmenu",function(e){e.preventDefault()},true);document.addEventListener("keydown",function(e){var k=(e.key||"").toUpperCase();var m=e.ctrlKey||e.metaKey;if(k==="F12"||e.keyCode===123||(m&&e.shiftKey&&(k==="I"||k==="J"||k==="C"))||(m&&(k==="U"||k==="S"))){b(e)}},true)})();</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Petunjuk Bermain — Petualangan Pecahan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="assets/css/custom.css">
+  <link rel="stylesheet" href="assets/css/versus.css">
+</head>
+<body>
+  <main class="garden-scene">
+    <div class="screen-shell">
+      <header class="topbar">
+        <a class="back-btn" href="index.html">← Beranda</a>
+        <nav class="utility-bar" aria-label="Pengaturan suara">
+          <button class="utility-btn" type="button" data-audio="music"><span class="utility-icon">♫</span><span class="utility-label">Musik</span></button>
+          <button class="utility-btn" type="button" data-audio="sfx"><span class="utility-icon">◉</span><span class="utility-label">Suara</span></button>
+          <button class="utility-btn dev-btn" type="button" data-open-modal="developerModal"><span class="utility-icon developer-glyph" aria-hidden="true"></span><span class="utility-label">Pengembang</span></button>
+        </nav>
+      </header>
+
+      <div class="page-heading"><h1>Petunjuk Bermain</h1><p>Ikuti empat langkah mudah ini</p></div>
+
+      <section class="content-wrap panel guide-board">
+        <p class="guide-intro">Selamat datang, Petualang! Di sini kamu akan belajar mengenal, membandingkan, menjumlahkan, mengurangkan, mengalikan, hingga membagi pecahan lewat permainan yang seru dan menantang.</p>
+        <div class="guide-grid">
+          <article class="guide-step">
+            <span class="step-no">1</span><div class="guide-symbol" aria-hidden="true">LEVEL</div>
+            <h3>Pilih Level</h3><p>Mulai dari Level 1. Level berikutnya akan otomatis terbuka setelah kamu berhasil menyelesaikan tantangan sebelumnya.</p>
+          </article>
+          <article class="guide-step">
+            <span class="step-no">2</span><div class="guide-symbol" aria-hidden="true">KETUK</div>
+            <h3>Ikuti Tantangan</h3><p>Berinteraksilah dengan objek! Ketuk bagian pizza, pilih tanda operasi, tuang cairan, atau potong tali sesuai instruksi.</p>
+          </article>
+          <article class="guide-step">
+            <span class="step-no">3</span><div class="guide-symbol" aria-hidden="true">CEK ✓</div>
+            <h3>Periksa Jawaban</h3><p>Tekan tombol Periksa Jawaban. Jika belum benar, jangan menyerah! Baca petunjuk yang muncul dan coba lagi.</p>
+          </article>
+          <article class="guide-step">
+            <span class="step-no">4</span><div class="guide-symbol" aria-hidden="true">★ JUARA</div>
+            <h3>Raih Bintang</h3><p>Selesaikan semua tantangan dengan cepat dan tepat untuk membuka peti harta karun pecahan!</p>
+          </article>
+        </div>
+        <div class="guide-tip"><strong>TIP:</strong> Nyalakan suara agar kamu mendengar tanda jawaban benar dan salah. Progres tersimpan otomatis di perangkatmu.</div>
+        <div class="game-actions actions-spaced">
+          <a class="primary-btn green" href="game-menu.html">Mulai Petualangan</a>
+          <a class="secondary-btn" href="materi.html">Belajar Dulu</a>
+        </div>
+      </section>
+    </div>
+  </main>
+  <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/audio.js"></script>
+</body>
+</html>
